@@ -10,11 +10,15 @@ import { ContactmanagerAppComponent } from './contactmanager-app.component';
 import { MainContentComponent } from './component/main-content/main-content.component';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import { SidenavComponent } from './component/sidenav/sidenav.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/user.service';
+import { NotesComponent } from './component/notes/notes.component';
 
 const routes: Routes = [
   {
     path: '', component: ContactmanagerAppComponent,
     children: [
+      { path: ':id', component: MainContentComponent },
       { path: '', component: MainContentComponent }
     ]
   },
@@ -24,16 +28,20 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
     MaterialModule,
     FlexLayoutModule,
     RouterModule.forChild(routes)
   ],
+  providers: [
+    UserService
+  ],
   declarations: [
     ContactmanagerAppComponent,
     ToolbarComponent, 
     MainContentComponent, 
-    SidenavComponent
+    SidenavComponent, NotesComponent
   ]
 })
 export class ContactmanagerModule { }
