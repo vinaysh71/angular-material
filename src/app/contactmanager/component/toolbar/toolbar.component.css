@@ -5,6 +5,10 @@
     min-width: 56px;
 }
 
+.example-spacer {
+  flex: 1 1 auto;
+}
+
 mat-icon {
     font-size: 30px;
     height: 56px;
